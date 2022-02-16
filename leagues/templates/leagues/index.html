@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sports Leagues 2</title>
+	</head>
+	<body>
+		<h1>Leagues</h1>
+		<ol>
+			{% for league in leagues %}
+				<li>{{league.name}}</li>
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Teams</h1>
+		<ol>
+			{% for team in teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% empty %}
+				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Players</h1>
+		<ol>
+			{% for player in players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Atlantic Soccer Conference Teams</h1>
+		<ol>
+			{% for team in atlantic_conference_teams.all %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Current Boston Penguins</h1>
+		<ol>
+			{% for player in curr_bos_penguins.all %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Current Baseball Conference</h1>
+		<ol>
+			{% for player in curr_base_conf.all %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Current Football Lopez's</h1>
+		<ol>
+			{% for player in curr_foot_lopez.all %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>All Football Players</h1>
+		<ol>
+			{% for player in football_players.all %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Current Teams with Sophias</h1>
+		<ol>
+			{% for team in sophia_teams.all %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Current Leagues with Sophias</h1>
+		<ol>
+			{% for league in sophia_leagues.all %}
+				<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Most Flores's</h1>
+		<ol>
+			{% for flores in most_flores.all %}
+				<li>{{flores.first_name}} {{flores.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Samuel Evan's Teams</h1>
+		<ol>
+			{% for team in sams_teams.all %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Tiger-Cats</h1>
+		<ol>
+			{% for player in tigercats.all %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Old Vikings</h1>
+		<ol>
+			{% for player in old_vikings.all %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Pre Colts Jacob Gray</h1>
+		<ol>
+			{% for team in pre_colts_jacob_gray.all %}
+				{% if "Oregon" not in team.location %}
+					<li>{{team.location}} {{team.team_name}}</li>
+				{% endif %}
+			{% endfor %}
+		</ol>
+		<h1>Amateur Baseball Joshuas</h1>
+		<ol>
+			{% for player in amateur_baseball_josh.all %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>12 Player Teams</h1>
+		<ol>
+			{% for team in 12_player_teams.all %}
+				{% if team.total_players >= 12 %}
+					<li>{{team.location}} {{team.team_name}} {{team.total_players}}</li>
+				{% endif %}
+			{% endfor %}
+		</ol>
+		<h1>Players By Teamcount</h1>
+		<ol>
+			{% for player in players_by_teamcount.all %}
+				<li>{{player.first_name}} {{player.last_name}} {{player.num_teams}}</li>
+			{% endfor %}
+		</ol>
+	</body>
+</html>
